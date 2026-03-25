@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <link rel="stylesheet" href="bento-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="global-navbar.css">
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/logo.webp" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-label">Core Systems</div>
+                <button class="nav-link active" onclick="showData('overview', this)">
+                    <i class="fa-solid fa-grid-2"></i> <span>Dashboard</span>
+                </button>
+                <button class="nav-link" onclick="showData('research', this)">
+                    <i class="fa-solid fa-flask-vial"></i> <span>Research Projects</span>
+                </button>
+                <button class="nav-link" onclick="showData('sequencing', this)">
+                    <i class="fa-solid fa-microscope"></i> <span>Genetic Sequencing</span>
+                </button>
+
+                <div class="nav-label mt-4">Administrative</div>
+                <button class="nav-link" onclick="showData('staff', this)">
+                    <i class="fa-solid fa-users-gear"></i> <span>Staff Directory</span>
+                </button>
+
+
+            </nav>
+            <div class="sidebar-footer">
+                <button class="nav-link logout-btn" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span>
+                </button>
+            </div>
+
+        </aside>
+
+        <main class="main-viewport">
+            <header class="top-bar">
+
+                <!-- LEFT -->
+                <div class="header-left">
+                    <h2 id="pageTitle">Admin Dashboard</h2>
+                    <p id="pageSub">Real-time laboratory intelligence</p>
+                </div>
+
+                <!-- CENTER SEARCH -->
+                <div class="header-center">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search samples, projects, patients...">
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE -->
+                <div class="header-right">
+                    <div class="notif-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="dot">3</span>
+                    </div>
+
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Arjun+K&background=6366f1&color=fff">
+                        <div class="user-text">
+                            <strong id="userRole">Role</strong>
+                            <span id="userEmail">email@example.com</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+
+            </header>
+
+            <div class="content-body" id="dynamicContent">
+            </div>
+        </main>
+    </div>
+
+    <div class="mobile-nav">
+        <button onclick="showData('overview', this)">
+            <i class="fa-solid fa-dashboard"></i>
+        </button>
+        <button onclick="showData('research', this)">
+            <i class="fa-solid fa-flask"></i>
+        </button>
+        <button onclick="showData('sequencing', this)">
+            <i class="fa-solid fa-dna"></i>
+        </button>
+        <button onclick="showData('staff', this)">
+            <i class="fa-solid fa-users"></i>
+        </button>
+        <button class="mobile-link logout-mobile" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </button>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

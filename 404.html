@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stackly</title>
+    <link rel="stylesheet" href="404.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="global-navbar.css">
+</head>
+
+<body>
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="index.html"
+                    style="font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none;">
+                    NeoGenix.
+                </a>
+            </div>
+
+            <!-- NAV -->
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                    <!-- MOBILE LOGIN -->
+                    <li class="mobile-login">
+                        <a href="login.html" class="btn-primary">Login</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="login.html" class="btn-primary desktop-login">Login</a>
+
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="error-page-light">
+        <div class="lab-grid"></div>
+
+        <div class="error-container">
+            <div class="error-card">
+                <div class="visual-element">
+                    <div class="search-circle">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <div class="error-number">404</div>
+                </div>
+
+                <div class="error-content">
+                    <span class="status-badge">Analysis Failed</span>
+                    <h1>Specimen Not Found</h1>
+                    <p>The digital sequence you are looking for is missing from our database. It may have been relocated
+                        or the link has expired.</p>
+
+                    <div class="error-actions">
+                        <a href="index.html" class="btn-primary">Return to Home</a>
+                        <a href="javascript:history.back()" class="btn-outline">Go Back</a>
+                    </div>
+                </div>
+            </div>
+            <p class="error-footer">Reference Code: <span class="mono">NULL_POINTER_SEQ_77</span></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

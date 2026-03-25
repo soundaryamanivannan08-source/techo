@@ -1,0 +1,1396 @@
+/* --- GLOBAL THEME & VARIABLES (MIDNIGHT LAB) --- */
+:root {
+    --primary: #10b981;      
+       --primary-dark: #059669;/* Electric Blue */
+    --secondary: #0f172a;     /* Deep Slate Navy */
+    --accent: #047a55;        /* Biotech Teal */
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Long text-ஐ உடைத்து layout-ஐ பாதுகாக்கும் */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+/* --- REUSABLE CLASS: SECTION TITLE --- */
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 70px;
+    color: var(--secondary);
+    letter-spacing: -1px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    margin: 15px auto 0;
+    border-radius: 10px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+.image-stack { position: relative; height: 500px; }
+.img-main img { width: 75%; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+.img-float-top { position: absolute; top: -30px; right: 0; width: 45%; }
+.img-float-bottom { position: absolute; bottom: 0; right: 30px; width: 45%; }
+.img-float-top img, .img-float-bottom img { border: 8px solid white; border-radius: 20px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+.exp-pill {
+    position: absolute; bottom: 40px; left: -20px; background: var(--blue); color: white;
+    padding: 20px 30px; border-radius: 20px; text-align: center; z-index: 10;
+}
+.exp-pill strong { display: block; font-size: 2.2rem; }
+.accent-blue { color: var(--blue); }
+.btn-primary {
+    background: var(--primary-dark);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+}/* ----- */
+
+.strategic-section {
+    background: var(--secondary);
+    padding: 100px 0;
+    color: var(--white);
+    /* Large devices lock: prevents internal scrolling if the content fits */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ================= NAVBAR ================= */
+
+/* Logo */
+.logo img {
+    height: 40px;
+    display: block;
+}
+
+/* Navbar wrapper */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--white);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Container */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--primary);
+}
+
+/* Login visibility */
+.desktop-login {
+    display: inline-block;
+}
+
+.mobile-login {
+    display: none;
+}
+
+/* ================= HAMBURGER ================= */
+
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+/* Burger animation */
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet & Mobile */
+@media (max-width: 992px) {
+
+    /* Show hamburger */
+    .nav-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    /* Hide desktop login */
+    .desktop-login {
+        display: none !important;
+    }
+
+    /* Show mobile login */
+    .mobile-login {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .mobile-login .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Mobile menu */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 576px) {
+    .nav-menu {
+        width: 100%;
+    }
+}
+.strategy-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.strategy-row.reverse {
+    flex-direction: reverse;
+}
+
+/* --- TEXT CONTENT --- */
+.strategy-text { flex: 1; }
+
+.pill-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--accent);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.vision-checklist {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.vision-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.vision-checklist i {
+    color: var(--primary); /* Contrast icon */
+}
+
+/* --- IMAGE CARDS --- */
+.strategy-image {
+    flex: 1;
+    position: relative;
+}
+
+.strategy-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    display: block;
+}
+
+.card-top { transform: rotate(2deg); transition: 0.5s; }
+.card-bottom { transform: rotate(-2deg); transition: 0.5s; }
+
+.strategy-row:hover .card-top, 
+.strategy-row:hover .card-bottom {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+    h2 { font-size: 2.2rem; }
+    .strategy-row { flex-direction: column !important; gap: 40px; text-align: center; }
+    .vision-checklist li { justify-content: center; }
+}
+
+/* --- UTILITIES & BUTTONS --- */
+.gradient-text {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+   
+}
+
+
+
+/* --- 1. HERO SECTION (GLASSMORPHISM) --- */
+.about-hero {
+    height: 90vh;
+    background: radial-gradient(circle at bottom right, var(--secondary) 0%, #020617 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Bio-Mesh Pattern generated via CSS */
+.about-hero::before {
+    content: '';
+    position: absolute;
+    width: 200%; height: 200%;
+    top: -50%; left: -50%;
+    background-image: 
+        radial-gradient(var(--accent) 1px, transparent 1px),
+        radial-gradient(var(--primary) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    opacity: 0.1;
+    animation: meshScroll 100s linear infinite;
+}
+
+.glass-overlay {
+    height: 100%; width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.1);
+    backdrop-filter: blur(1px);
+}
+
+.about-hero-content {
+    text-align: center;
+    max-width: 800px;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.about-hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.about-hero-content p {
+    font-size: 1.25rem;
+    opacity: 0.85;
+}
+
+/* --- 2. COMPANY STORY --- */
+.company-story {
+    padding: 120px 10%;
+}
+
+.story-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-text h2 {
+    font-size: 2.8rem;
+    color: var(--secondary);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.story-text p {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.08);
+}
+.hero-area {
+    padding: 120px 0;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- IMAGE STACK LOGIC --- */
+.image-stack {
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+}
+
+.img-main img {
+    width: 80%;
+    border-radius: 40px;
+    box-shadow: 0 40px 80px rgba(15, 23, 42, 0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.img-float-top {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    width: 45%;
+    z-index: 2;
+}
+
+.img-float-bottom {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 40%;
+    z-index: 3;
+}
+
+.img-float-top img, 
+.img-float-bottom img {
+    border-radius: 24px;
+    border: 8px solid #ffffff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.exp-pill {
+    position: absolute;
+    bottom: 80px;
+    left: -20px;
+    background: var(--primary); /* Electric Blue */
+    color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 24px;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+}
+
+.exp-pill strong {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.exp-pill span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* --- CONTENT TEXT --- */
+.sub-tag {
+    display: inline-block;
+    background: rgba(4, 122, 85, 0.1);
+    color: var(--accent); /* Biotech Teal */
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.content-text h1 {
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    line-height: 1.1;
+    color: var(--secondary); /* Deep Navy */
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+
+.accent-blue {
+    color: var(--primary);
+}
+
+.content-text p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    max-width: 550px;
+}
+
+/* Checklist */
+.check-list {
+    margin-bottom: 40px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.check-item i {
+    color: var(--accent);
+    background: rgba(4, 122, 85, 0.1);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.9rem;
+}
+
+/* --- 3. MISSION & VISION (BENTO GRID) --- */
+.mission-vision {
+    padding: 100px 10%;
+    background: #fdfdfd;
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.mv-card {
+    background: var(--glass);
+    border: 1px solid rgba(0,0,0,0.03);
+    padding: 60px 40px;
+    border-radius: 32px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.mv-card:hover {
+    background: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(16, 185, 129, 0.1);
+}
+
+.mv-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+/* --- 4. RESEARCH AREAS (OVERLAY CARDS) --- */
+.research-areas {
+    padding: 120px 10%;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.research-card {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+    transition: var(--transition);
+}
+
+.research-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(15,23,42,0.95), transparent);
+    color: var(--white);
+}
+
+.card-overlay i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+.card-overlay h3 { font-size: 1.8rem; margin-bottom: 10px; }
+.card-overlay p { opacity: 0.75; font-size: 0.9rem; }
+
+.research-card:hover { transform: scale(1.03); }
+.research-card:hover img { transform: scale(1.1) rotate(2deg); }
+
+/* --- 5. TEAM (PROFILE SLIDERS) --- */
+.team {
+    padding: 100px 10%;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+}
+
+.team-card {
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.profile-img {
+    width: 200px; height: 200px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(0,0,0,0.03);
+    transition: var(--transition);
+}
+
+.profile-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.bio-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.team-card:hover .profile-img {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* --- 6. ACHIEVEMENTS (MIDNIGHT PULSE) --- */
+.achievements {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.achievement-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.achievement-grid h2 {
+    font-size: 3.5rem;
+    color: var(--accent);
+    margin-bottom: 5px;
+    position: relative;
+}
+
+/* --- 7. CTA (MODERN SPLIT) --- */
+.cta {
+    padding: 120px 10%;
+    background: var(--white);
+}
+
+.cta-inner {
+    background: radial-gradient(circle at top right, #f0f9ff, #ffffff);
+    padding: 80px;
+    border-radius: 40px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.cta h2 { font-size: 3rem; margin-bottom: 25px; line-height: 1.2; }
+.cta p { margin-bottom: 40px; color: var(--text-muted); max-width: 600px; margin-left: auto; margin-right: auto;}
+
+
+
+/* --- ANIMATIONS & REVEAL --- */
+/* --- ANIMATIONS & REVEAL --- */
+.biotech-reveal {
+    opacity: 1; /* மறைக்கப்பட்ட content மீண்டும் தெரியும் */
+    transform: translateY(0); 
+    transition: var(--transition);
+}
+
+.biotech-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes meshScroll {
+    from { background-position: 0 0, 25px 25px; }
+    to { background-position: 1000px 1000px, 1025px 1025px; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE LOGIC --- */
+@media (max-width: 1024px) {
+    .mv-grid { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .story-container { flex-direction: column; text-align: center; }
+    .about-hero { height: 70vh; }
+    .achievement-grid { display: grid; grid-template-columns: 1fr 1fr; }
+}
+/* --- TIMELINE SECTION --- */
+.biotech-history {
+    padding: 100px 10%;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+.biotech-timeline {
+    position: relative;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+/* Central Vertical Line */
+.timeline-stem {
+    position: absolute;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    margin-bottom: 60px;
+    display: flex;
+}
+
+/* Alternating Sides */
+.timeline-item.left {
+    justify-content: flex-end;
+    padding-right: 50px;
+    left: 0;
+}
+
+.timeline-item.right {
+    justify-content: flex-start;
+    padding-left: 50px;
+    left: 50%;
+}
+
+/* Card Content Styling */
+.timeline-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    max-width: 450px;
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+}
+
+.timeline-date {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content h3 {
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.timeline-content img {
+    width: 100%;
+    border-radius: 15px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Central Dots */
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    border: 4px solid var(--primary);
+    border-radius: 50%;
+    top: 30px;
+    z-index: 10;
+}
+
+.left .timeline-dot { right: -12px; }
+.right .timeline-dot { left: -12px; }
+
+/* REVEAL ANIMATIONS override for timeline */
+.biotech-reveal.left { transform: translateX(-50px); opacity: 0; }
+.biotech-reveal.right { transform: translateX(50px); opacity: 0; }
+
+.biotech-reveal.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* --- RESPONSIVE TIMELINE --- */
+@media (max-width: 768px) {
+    .timeline-stem { left: 30px; }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px !important;
+        padding-right: 0 !important;
+        left: 0 !important;
+    }
+
+    .timeline-item.left, .timeline-item.right { justify-content: flex-start; }
+    
+    .timeline-dot { left: 18px !important; }
+
+    .biotech-reveal.left, .biotech-reveal.right {
+        transform: translateY(30px);
+    }
+}
+/* Footer */
+
+
+.footer {
+    background-color: var(--secondary);
+    color: var(--primary);
+    padding: 80px 0 20px;
+
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 0 2rem;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-desc {
+    color: var(--white);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.footer-col h4 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Accent line under headings */
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary-color);
+    transform: translateX(8px); /* Sliding animation on hover */
+}
+
+/* Social Icons */
+.social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: rgba(255,255,255,0.05);
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* Newsletter Input */
+.newsletter {
+    margin-top: 25px;
+    display: flex;
+}
+
+.newsletter input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    width: 100%;
+}
+
+.newsletter button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter button:hover {
+    background: var(--hover-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive Logic */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-col ul li a:hover {
+        transform: translateY(-3px);
+    }
+}
+/* ================= ENHANCED RESPONSIVENESS ================= */
+
+/* Ultra Large Screens */
+@media (min-width: 1400px) {
+    .container,
+    .nav-container {
+        max-width: 1400px;
+    }
+}
+
+/* Tablet Improvements */
+@media (max-width: 1024px) {
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .image-stack {
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-main img {
+        width: 90%;
+    }
+
+    .img-float-top,
+    .img-float-bottom {
+        display: none;
+    }
+
+    .story-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .cta-inner {
+        padding: 50px 30px;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .strategy-row {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .strategy-image img {
+        border-radius: 20px;
+    }
+
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cta-inner {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+}
+
+/* ================= GLOBAL ANIMATIONS ================= */
+
+/* Smooth page rendering */
+body {
+    animation: fadeInPage 0.8s ease;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Scroll Reveal (universal) */
+.reveal {
+    opacity: 1;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card Hover Lift */
+.mv-card,
+.team-card,
+.research-card,
+.timeline-content {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.mv-card:hover,
+.team-card:hover,
+.research-card:hover,
+.timeline-content:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Image Smooth Zoom */
+img {
+    transition: transform 0.6s ease;
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* Button Pulse Animation */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+    transition: 0.6s;
+}
+
+.btn-primary:hover::after {
+    top: 0;
+    left: 0;
+}
+
+/* Navbar Scroll Effect */
+.navbar.scrolled {
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+/* Floating subtle animation */
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.img-main img {
+    animation: floatY 6s ease-in-out infinite;
+}
+
+/* Timeline pulse */
+.timeline-dot {
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(14,165,233,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(14,165,233,0); }
+    100% { box-shadow: 0 0 0 0 rgba(14,165,233,0); }
+}
+/* 
+Tablet & Small Laptops (1024px and below) */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    /* Adjust Image Stack for mobile (Stacking them vertically) */
+    .image-stack {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .img-main {
+        width: 100%;
+    }
+
+    .img-main img {
+        width: 100%;
+    }
+
+    .img-float-top, 
+    .img-float-bottom {
+        position: relative;
+        width: 80%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: -40px auto 0; /* Creates a slight overlap look */
+    }
+
+    .exp-pill {
+        position: static;
+        margin: 20px auto;
+        display: inline-block;
+    }
+
+    .research-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mv-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .strategy-row, .strategy-row.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .strategy-text, .strategy-image {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* Mobile Devices (768px and below) */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+    }
+
+    .about-hero {
+        height: 80vh;
+    }
+
+    .about-hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .story-container {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* Timeline Mobile Fix */
+    .timeline-stem {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+        left: 0 !important;
+        justify-content: flex-start !important;
+    }
+
+    .timeline-dot {
+        left: 10px !important;
+    }
+
+    .timeline-content {
+        max-width: 100%;
+    }
+}
+
+/* Tiny Screens (480px and below) */
+/* Tiny Screens (480px and below) */
+@media (max-width: 480px) {
+    .about-hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+    .cta-inner {
+        padding: 40px 20px;
+    }
+    .btn-primary {
+        padding: 15px 30px;
+        font-size: 0.9rem;
+    }
+    /* -- Newly Added Fixes for Complete Responsiveness -- */
+    .team-grid {
+        grid-template-columns: 1fr; /* Team cards வலது ஓரமாக செல்வதை தடுக்கும் */
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 1.6rem;
+    }
+    .timeline-content {
+        padding: 20px;
+    }
+}
+
+/* --- 3. FIX FOR STICKY NAVBAR OVERLAP --- */
+section {
+    scroll-margin-top: 80px;
+}

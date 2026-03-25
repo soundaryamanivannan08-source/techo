@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- EXACT FIX FOR THE EYE ICON --- */
+        /* --- THE ULTIMATE OVERLAY FIX --- */
+        /* --- CSS FIX FOR ICON ALIGNMENT --- */
+        .input-wrapper {
+            position: relative !important;
+            width: 100% !important;
+            display: block !important;
+            /* Forces input and icons to layer */
+        }
+
+        .input-wrapper input {
+            width: 100% !important;
+            padding-left: 45px !important;
+            /* Space for Lock Icon */
+            padding-right: 45px !important;
+            /* Space for Eye Icon */
+            box-sizing: border-box !important;
+        }
+
+        /* Lock Icon (Left Side) */
+        .input-wrapper i.fa-lock {
+            position: absolute !important;
+            left: 15px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            color: #94a3b8;
+            z-index: 10;
+        }
+
+        /* Eye Icon (Right Side Corner) */
+        #togglePassword {
+            position: absolute !important;
+            right: 15px !important;
+            /* Forces it to the right corner */
+            left: auto !important;
+            /* Prevents it from sticking to the left */
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            color: #94a3b8;
+            cursor: pointer !important;
+            z-index: 10;
+        }
+
+        #togglePassword:hover {
+            color: #0ea5e9;
+        }
+
+        /* Remember Me Styles */
+        .remember-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .remember-group input {
+            width: 16px;
+            height: 16px;
+            accent-color: #0ea5e9;
+        }
+    </style>
+    <link rel="stylesheet" href="global-navbar.css">
+</head>
+
+<body>
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.webp" alt="" class="logo-img">
+                </a>
+            </div>
+            <!-- NAV -->
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                    <!-- MOBILE LOGIN -->
+                    <li class="mobile-login">
+                        <a href="login.html" class="btn-primary">Login</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="login.html" class="btn-primary desktop-login">Login</a>
+
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="app-viewport">
+        <div class="auth-card">
+            <div class="card-grid">
+                <div class="card-left">
+                    <header class="card-header">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="assets/logo.webp" alt="Logo">
+                            </a>
+                        </div>
+                        <nav class="header-nav">
+                            <a href="index.html" class="home-link">Back To Home</a>
+                        </nav>
+                    </header>
+
+                    <div class="auth-body">
+                        <div class="welcome-text">
+                            <h1 id="authTitle">Welcome back<span>.</span></h1>
+                            <p class="toggle-text">
+                                <span id="toggleMsg">New to the grid?</span>
+                                <a href="#" id="toggleAuth">Create Account</a>
+                            </p>
+                        </div>
+
+                        <form id="authForm" class="compact-form">
+                            <div class="field-group" id="nameField" style="display: none;">
+                                <label>Full Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-user"
+                                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+                                    <input type="text" id="fullname" placeholder="Enter your name"
+                                        style="padding-left: 45px;">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Designation</label>
+                                <div class="select-box">
+                                    <select id="userRole" required>
+                                        <option value="" disabled selected>Choose Authority</option>
+                                        <option value="admin">Administrator</option>
+                                        <option value="patient">Patient</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Lab Email</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope"
+                                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+                                    <input type="email" id="email" placeholder="name@bionova.lab" required
+                                        style="padding-left: 45px;">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Passkey</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-lock"
+                                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+                                    <input type="password" id="password" placeholder="••••••••" required
+                                        style="padding-left: 45px;">
+                                    <i class="fa-regular fa-eye-slash" id="togglePassword"></i>
+                                </div>
+                            </div>
+
+                            <div class="remember-group">
+                                <input type="checkbox" id="rememberMe">
+                                <label for="rememberMe">Remember me</label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="alt-btn"
+                                    onclick="window.location.href='404.html'">Forgot?</button>
+                                <button type="submit" class="prime-btn" id="submitBtn">
+                                    <span>Login Account</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <footer class="card-footer">
+                        <p>© 2026 NeoGenix. Secured by Bio-Shield v2.0</p>
+                    </footer>
+                </div>
+
+                <div class="card-right">
+                    <div class="wave-image"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const toggleBtn = document.getElementById('toggleAuth');
+        const nameField = document.getElementById('nameField');
+        const authTitle = document.getElementById('authTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const toggleMsg = document.getElementById('toggleMsg');
+        const authForm = document.getElementById('authForm');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        let isLogin = true;
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            isLogin = !isLogin;
+            if (isLogin) {
+                authTitle.innerHTML = "Welcome back<span>.</span>";
+                nameField.style.display = "none";
+                submitBtn.querySelector('span').innerText = "Login Account";
+                toggleMsg.innerText = "New to the grid?";
+                toggleBtn.innerText = "Create Account";
+            } else {
+                authTitle.innerHTML = "Create account<span>.</span>";
+                nameField.style.display = "block";
+                submitBtn.querySelector('span').innerText = "Register Now";
+                toggleMsg.innerText = "Already a member?";
+                toggleBtn.innerText = "Log In";
+            }
+        });
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            login();
+        });
+
+        function login() {
+            const name = document.getElementById("fullname")?.value || "User";
+            const email = document.getElementById("email").value;
+            const role = document.getElementById("userRole").value;
+            const rememberMe = document.getElementById("rememberMe").checked;
+
+            localStorage.setItem("userName", name);
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userRole", role);
+            localStorage.setItem("rememberMe", rememberMe);
+
+            if (role === "admin") {
+                window.location.href = "admin-dashboard.html";
+            } else if (role === "patient") {
+                window.location.href = "user-dashboard.html";
+            } else {
+                alert("Please select a role");
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

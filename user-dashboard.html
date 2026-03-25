@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoGenix | User Dashboard</title>
+    <link rel="stylesheet" href="user-dashboard.css">
+    <link rel="stylesheet" href="bento-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="global-navbar.css">
+</head>
+
+<body>
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="index.html"
+                    style="font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none;">
+                    NeoGenix.
+                </a>
+            </div>
+
+            <!-- NAV -->
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                    <!-- MOBILE LOGIN -->
+                    <li class="mobile-login">
+                        <a href="login.html" class="btn-primary">Portal Access</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="login.html" class="btn-primary desktop-login">Portal Access</a>
+
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar" id="sidebar">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/logo.webp" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-label">Personal Workspace</div>
+                <button class="nav-link active" onclick="showData('overview', this)">
+                    <i class="fa-solid fa-house-user"></i> <span>Dashboard</span>
+                </button>
+                <button class="nav-link" onclick="showData('myResearch', this)">
+                    <i class="fa-solid fa-flask-vial"></i> <span>My Research</span>
+                </button>
+                <button class="nav-link" onclick="showData('messages', this)">
+                    <i class="fa-solid fa-comment-dots"></i> <span>Messages</span>
+                </button>
+
+                <div class="nav-label mt-4">Account</div>
+                <button class="nav-link" onclick="showData('profile', this)">
+                    <i class="fa-solid fa-circle-user"></i> <span>My Profile</span>
+                </button>
+                <button class="nav-link" onclick="showData('billing', this)">
+                    <i class="fa-solid fa-credit-card"></i> <span>Billing</span>
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="nav-link logout-btn" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-viewport">
+            <header class="top-bar">
+                <div class="header-left">
+                    <h2 id="pageTitle">Home Feed</h2>
+                    <p id="pageSub">Real-time laboratory intelligence</p>
+                </div>
+                <div class="header-center">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search samples, projects...">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notif-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="dot">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img id="userAvatar" src="https://ui-avatars.com/api/?name=Arjun+K&background=6366f1&color=fff">
+                        <div class="user-text">
+                            <strong id="userRole">Admin</strong>
+                            <span id="userEmail">arjun@bionova.com</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body" id="dynamicContent">
+            </div>
+        </main>
+    </div>
+    <div class="mobile-nav">
+        <button class="mobile-link active" onclick="showData('overview', this)">
+            <i class="fa-solid fa-house-user"></i>
+            <span>Home</span>
+        </button>
+        <button class="mobile-link" onclick="showData('myResearch', this)">
+            <i class="fa-solid fa-flask-vial"></i>
+            <span>Research</span>
+        </button>
+        <button class="mobile-link" onclick="showData('messages', this)">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span>Chat</span>
+        </button>
+        <button class="mobile-link" onclick="showData('profile', this)">
+            <i class="fa-solid fa-circle-user"></i>
+            <span>Profile</span>
+        </button>
+
+        <button class="mobile-link logout-mobile" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
